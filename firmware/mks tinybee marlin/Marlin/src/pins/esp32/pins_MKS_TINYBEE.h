@@ -53,7 +53,7 @@
 #define X_STOP_PIN                            33
 #define Y_STOP_PIN                            32
 #define Z_STOP_PIN                            22
-//#define FIL_RUNOUT_PIN                        35
+#define FIL_RUNOUT_PIN                        35
 
 //
 // Enable I2S stepper stream
@@ -102,9 +102,9 @@
 //
 // Heaters / Fans
 //
-#define HEATER_0_PIN                         145
+#define HEATER_0_PIN                         146//145
 #ifndef MKS_TEST
-#define HEATER_1_PIN                         146
+#define HEATER_1_PIN                         146//146
 #define FAN_PIN                              147
 #define FAN1_PIN                             148
 #endif
@@ -141,6 +141,16 @@
  *                ￣￣￣                                            ￣￣￣
  *                EXP1                                               EXP2
  */
+/*
+ALT_STEP=IO0
+ALT_DIR=IO16 
+
+AZ_STEP=IO21
+AZ_DIR=IO04
+
+MS1_PIN=IO15
+MS2_PIN=IO17
+*/
 
 #define EXP1_03_PIN                         17
 #define EXP1_04_PIN                         15
@@ -160,15 +170,21 @@
 #define EXP2_09_PIN                         18
 #define EXP2_10_PIN                         19
 
+
+
+#define BEEPER_PIN                          149
+#define BTN_ENC                             13
+#define LCD_PINS_ENABLE                     21
+#define LCD_PINS_RS                         4
+#define BTN_EN1                             14
+#define BTN_EN2                             12
+#define LCD_BACKLIGHT_PIN                   -1
+#define LCD_PINS_D4                     0
+
+
+
 #if HAS_WIRED_LCD
 
-  #define BEEPER_PIN                          149
-  #define BTN_ENC                             13
-  #define LCD_PINS_ENABLE                     21
-  #define LCD_PINS_RS                         4
-  #define BTN_EN1                             14
-  #define BTN_EN2                             12
-  #define LCD_BACKLIGHT_PIN                   -1
 
   // MKS MINI12864 and MKS LCD12864B; If using MKS LCD12864A (Need to remove RPK2 resistor)
   #if ENABLED(MKS_MINI_12864)
@@ -196,15 +212,15 @@
     #endif
   #else // !MKS_MINI_12864
 
-    #define LCD_PINS_D4                     0
+    
     #if ENABLED(REPRAP_DISCOUNT_SMART_CONTROLLER)
       #define LCD_PINS_D5                   16
       #define LCD_PINS_D6                   15
       #define LCD_PINS_D7                   17
     #endif
 
-    #define ST7920_DELAY_1         DELAY_NS(96)
-    #define ST7920_DELAY_2         DELAY_NS(48)
+    #define ST7920_DELAY_1         DELAY_NS(200)
+    #define ST7920_DELAY_2         DELAY_NS(200)
     #define ST7920_DELAY_3         DELAY_NS(600)
         
     // #define BOARD_ST7920_DELAY_1    DELAY_NS(96)

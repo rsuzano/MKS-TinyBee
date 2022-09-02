@@ -68,8 +68,8 @@ static uint8_t u8g_bitData, u8g_bitNotData, u8g_bitClock, u8g_bitNotClock;
 static volatile uint8_t *u8g_outData, *u8g_outClock;
 
 static void u8g_com_arduino_init_shift_out(uint8_t dataPin, uint8_t clockPin) {
-  u8g_outData = portOutputRegister(digitalPinToPort(dataPin));
-  u8g_outClock = portOutputRegister(digitalPinToPort(clockPin));
+  u8g_outData = (unsigned char*) portOutputRegister(digitalPinToPort(dataPin));
+  u8g_outClock = (unsigned char*) portOutputRegister(digitalPinToPort(clockPin));
   u8g_bitData = digitalPinToBitMask(dataPin);
   u8g_bitClock = digitalPinToBitMask(clockPin);
 
